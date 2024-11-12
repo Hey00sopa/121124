@@ -18,16 +18,20 @@ int posicao = 0;
 int contador;//vai decrementar o valor que se digitar 
 unsigned long reloginho_tempo = 0;//conta o tempo
 bool iniciar = false;//inicia a contagem
+#define bip 12;
 
 
 void setup()
 {
+  pinMode(bip, OUTPUT);//liga o autofalante
+  tone(bip, 440, 100);
   lcd.init(); //inicia LCD
   lcd.backlight(); //ligar a luz de fundo do LCD
   lcd.clear(); //limpa o LCD
   lcd.setCursor(0, 0); //coluna 0 e linha 0
   lcd.print("Microondas:");
   lcd.setCursor(0, 1); //coluna 0 e linha 1
+  lcd.print("00");
   // Serial.begin(9600); // Inicia porta serial
 }
 
@@ -60,8 +64,17 @@ void loop()
   if(iniciar){
     contador--;
     lcd.setCursor(0,1);
+    if(contador < 10){
+      lcd.print("0");
+    }
     lcd.print(contador);
     if(contador == o){
+      for(int 3 = 1; i<=3; i++){
+        tone(bip, 440, 100);
+        delay(500);
+
+      }
+      tone(bip, 440, 100);
       iniciar = false;
     }
   }
