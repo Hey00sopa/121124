@@ -61,7 +61,8 @@ void loop()
     }
   }
 
-  if(iniciar){
+  if ((iniciar) && (millis()-reloginho_tempo >= 1000)){
+    tempo = millis();
     contador--;
     lcd.setCursor(0,1);
     if(contador < 10){
@@ -74,7 +75,7 @@ void loop()
         delay(500);
 
       }
-      tone(bip, 440, 100);
+
       iniciar = false;
     }
   }
